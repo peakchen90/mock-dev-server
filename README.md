@@ -14,9 +14,7 @@ npm install -g mock-server
     * /a
     * /sub/b
     * /sub/c
-
-如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-server -b /api`，将会生成以下路由：
-
+    * 如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-server -b /api`，将会生成以下路由：
     * /api/a
     * /api/sub/b
     * /api/sub/c
