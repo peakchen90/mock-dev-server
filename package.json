@@ -1,7 +1,8 @@
 {
   "name": "mock-server",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A simple server for mockjs",
+  "license": "MIT",
   "main": "index.js",
   "bin": {
     "mock-server": "./bin/index.js"
@@ -14,7 +15,14 @@
     "server",
     "mock server"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peakchen90/mock-server"
+  },
+  "bugs": {
+    "url": "https://github.com/peakchen90/mock-server/issues"
+  },
+  "author": "peakchen <1558267774@qq.com>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",
