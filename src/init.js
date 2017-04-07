@@ -64,7 +64,7 @@ function parseMock(f, filename, parent) {
       data
     })
   } catch (e) {
-    console.error(chalk.red('JSON ERROR on: ' + chalk.bgYellow(f)))
+    console.error(chalk.red('JSON ERROR on: ' + f))
     console.error(chalk.red(e.stack))
   }
 }
