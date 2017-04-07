@@ -1,4 +1,4 @@
-# mock-server
+# mock-dev-server
 一个简易的Mock服务器
 
 ## 安装
