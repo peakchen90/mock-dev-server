@@ -15,7 +15,7 @@ npm install -g mock-server
     * /sub/b
     * /sub/c
 
-    如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-server -b /api`，将会生成以下路由：
+如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-server -b /api`，将会生成以下路由：
 
     * /api/a
     * /api/sub/b
@@ -41,12 +41,12 @@ npm install -g mock-server
 
   ```json
   {
-        "id|+1": 1,
-        "name": "@cname",
-        "description": "@cparagraph",
-        "age|20-50": 20,
-        "email": "@email",
-        "birthday": "@datetime('yyyy-MM-dd')"
+    "id|+1": 1,
+    "name": "@cname",
+    "description": "@cparagraph",
+    "age|20-50": 20,
+    "email": "@email",
+    "birthday": "@datetime('yyyy-MM-dd')"
   }
   ```
 
@@ -54,12 +54,12 @@ npm install -g mock-server
 
   ```json
   {
-        "id": 1,
-        "name": "熊强",
-        "description": "值月利反十历金细问此活场件收。即何林口属院例直起同政候文管研至龙。治整支料去林用铁严面即总要小。",
-        "age": 32,
-        "email": "x.bbfnlx@jivoslqz.pro",
-        "birthday": "2003-07-05"
+    "id": 1,
+    "name": "熊强",
+    "description": "值月利反十历金细问此活场件收。即何林口属院例直起同政候文管研至龙。治整支料去林用铁严面即总要小。",
+    "age": 32,
+    "email": "x.bbfnlx@jivoslqz.pro",
+    "birthday": "2003-07-05"
   }
   ```
 
