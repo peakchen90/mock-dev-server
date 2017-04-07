@@ -4,7 +4,7 @@
 ## 安装
 
 ```
-npm install -g mock-server
+npm install -g mock-dev-server
 ```
 
 ## 如何使用
@@ -14,13 +14,13 @@ npm install -g mock-server
     * /a
     * /sub/b
     * /sub/c
-    * 如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-server -b /api`，将会生成以下路由：
+    * 如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-dev-server -b /api`，将会生成以下路由：
     * /api/a
     * /api/sub/b
     * /api/sub/c
 
   4. 配置 Mock 数据的 json 文件说明：API与 [Mockjs官网api](http://mockjs.com)一致，使用 `Mock.mock()` 方法返回随机数据
-  5. 运行命令 `mock-server` ，即可在 http://localhost:3000/* 请求到api，支持所有的请求类型，如果要动态改变 `mock` 数据，则需要在命令行添加 `-w` 参数
+  5. 运行命令 `mock-dev-server` ，即可在 http://localhost:3000/* 请求到api，支持所有的请求类型，如果要动态改变 `mock` 数据，则需要在命令行添加 `-w` 参数
 
 ## 示例
   1. 目录结构
@@ -64,25 +64,25 @@ npm install -g mock-server
   3. 运行命令
   ```bash
   # 启动 mock server
-  mock-server
+  mock-dev-server
 
   # 监听 /mock/**/*.json 文件
-  mock-server -w
+  mock-dev-server -w
 
   # 配置 mock 数据目录（下面的示例将会在读取根目录下的 data 文件夹）
-  mock-server -m data
+  mock-dev-server -m data
 
   # 配置端口号（默认：3000）
-  mock-server -p 3000
+  mock-dev-server -p 3000
 
   # 配置请求的基本路径，必须以 / 开始，如 /api
   # 如下配置请求url就变成了 http://localhost:3000/api/a
-  mock-server -b /api
+  mock-dev-server -b /api
   ```
 
 ## 命令行参数
 ```
-Usage: mock-server [options]
+Usage: mock-dev-server [options]
 
 Options:
   -m, --mock   设置mock数据目录                       [string] [default: "mock"]
@@ -92,5 +92,5 @@ Options:
   -h, --help   Show help                                               [boolean]
 
 Examples:
-  mock-server -m mock --port 3000 -w -b /api
+  mock-dev-server -m mock --port 3000 -w -b /api
 ```

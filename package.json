@@ -1,11 +1,11 @@
 {
   "name": "mock-dev-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple server for mockjs",
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "mock-server": "./bin/index.js"
+    "mock-dev-server": "./bin/index.js"
   },
   "scripts": {},
   "keywords": [
