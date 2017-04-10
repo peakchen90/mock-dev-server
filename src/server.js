@@ -46,7 +46,7 @@ class Server {
    */
   update(routes, path) {
     this.router.updateRoutes(routes)
-    console.log(chalk.green('File changed: ' + chalk.grey(path)), '\n')
+    console.log(chalk.yellow('File changed: ' + chalk.grey(path)), '\n')
   }
 }
 

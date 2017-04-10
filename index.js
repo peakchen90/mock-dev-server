@@ -1,3 +1,4 @@
+const path = require('path')
 const Server = require('./src/server')
 const initMock = require('./src/init')
 
@@ -12,9 +13,9 @@ function MockServer({
     let chokidar = require('chokidar')
     let watcher = chokidar.watch(mock)
     server.watch(initMock(mock, base))
-    watcher.on('change', (path) => {
-      if (/\.json$/i.test(path)) {
-        server.update(initMock(mock, base), path)
+    watcher.on('change', (_path) => {
+      if (/\.json$/i.test(_path)) {
+        server.update(initMock(mock, base), path.resolve(_path))
       }
     })
   } else {

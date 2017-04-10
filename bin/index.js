@@ -23,14 +23,35 @@ const argv = require('yargs')
     describe: '路由根目录(必须以 / 开始)',
     type: 'string'
   })
+  .option('v', {
+    alias: 'version',
+    describe: '查看当前版本号'
+  })
   .usage('Usage: mock-server [options]')
   .example('mock-server -m mock --port 3000 -w -b /api')
   .help('h')
   .alias('h', 'help')
   .argv
 
-const { mock, watch, port, base } = argv
+const fs = require('fs')
+const path = require('path')
 const mockServer = require('../index')
+const deleteComments = require('../src/util').deleteComments
+const { mock, watch, port, base, version } = argv
+
+if (version) {
+  fs.readFile(path.resolve(__dirname, '..', 'package.json'), 'utf8', (err, data) => {
+    data = deleteComments(data);
+    let v
+    try {
+      v = 'v' + JSON.parse(data).version
+    } catch (e) {
+      v = 'Get version failed'
+    }
+    console.log(v)
+  })
+  return
+}
 
 mockServer({
   mock,
@@ -38,21 +59,3 @@ mockServer({
   port,
   base
 })
-
-// const Server = require('../src/server')
-// const initMock = require('../src/init')
-// const server = new Server(port)
-
-// if (watch) {
-//   let chokidar = require('chokidar')
-//   let watcher = chokidar.watch(mock)
-//   server.watch(initMock(mock, base))
-//   watcher.on('change', (path) => {
-//     if (/\.json$/i.test(path)) {
-//       server.update(initMock(mock, base), path)
-//     }
-//   })
-// } else {
-//   server.start(initMock(mock, base))
-// }
-

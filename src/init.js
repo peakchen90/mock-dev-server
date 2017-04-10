@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
+const deleteComments = require('./util').deleteComments
 
 // 所有router信息
 let base
@@ -67,18 +68,6 @@ function parseMock(f, filename, parent) {
     console.error(chalk.red('JSON ERROR on: ' + f))
     console.error(chalk.red(e.stack))
   }
-}
-
-/**
- * 删除注释
- * @param {string} text
- * @return {string}
- */
-function deleteComments(text) {
-  let pattern = /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n))|(\/\*(\n|.)*?\*\/)/g
-  return text.replace(pattern, (word) => {
-    return /^\/{2,}/.test(word) || /^\/\*/.test(word) ? "" : word
-  })
 }
 
 module.exports = function (mock, base) {
