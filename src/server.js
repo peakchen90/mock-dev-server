@@ -13,6 +13,8 @@ class Server {
     this.router = new Router()
     // 请求日志
     this.app.use(morgan('dev'))
+    // 保存监听更新开始时间
+    this.updateStart = Date.now()
   }
 
   /**
@@ -23,8 +25,8 @@ class Server {
     let router = this.router.create(routes)
     this.app.use(router)
     this.app.listen(this.port, () => {
-      console.log(chalk.magenta('Mock Server is starting...'))
-      console.log(chalk.green('listen on: ' + chalk.cyan('http://localhost:' + this.port)), '\n')
+      console.log(chalk.bgCyan.black(' START ') + chalk.cyan(' Mock Server start'))
+      console.log(chalk.green('listen on: ' + chalk.magenta('http://localhost:' + this.port)), '\n')
     })
   }
 
@@ -36,8 +38,8 @@ class Server {
     let router = this.router.startWatch(routes)
     this.app.use(router)
     this.app.listen(this.port, () => {
-      console.log(chalk.magenta('Mock Server is watching...'))
-      console.log(chalk.green('listen on: ' + chalk.cyan('http://localhost:' + this.port)), '\n')
+      console.log(chalk.bgCyan.black(' WATCH ') + chalk.cyan(' Mock Server watch'))
+      console.log(chalk.green('listen on: ' + chalk.magenta('http://localhost:' + this.port)), '\n')
     })
   }
   /**
@@ -45,8 +47,9 @@ class Server {
    * @param {array} routes
    */
   update(routes, path) {
+    let ms = Date.now() - this.updateStart
     this.router.updateRoutes(routes)
-    console.log(chalk.yellow('File changed: ' + chalk.grey(path)), '\n')
+    console.log(chalk.bgGreen.black(' DONE ') + chalk.green(' Mock server update in: ' + ms + 'ms'), '\n')
   }
 }
 
