@@ -14,7 +14,14 @@ function init(mock, _base) {
   base = _base
   router = []
   const dir = path.resolve(mock)
-  eachDir(dir)
+  fs.exists(dir, exist => {
+    if (exist) {
+      eachDir(dir)
+    } else {
+      throw chalk.bgRed.black(' ERROR ') + chalk.red(' ' + dir + ' not exist')
+      // console.log(chalk.bgRed.black(' ERROR ') + chalk.red(' ' + dir + ' not exist'), '\n')
+    }
+  })
 }
 
 /**
