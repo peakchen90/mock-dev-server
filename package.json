@@ -1,6 +1,6 @@
 {
   "name": "mock-dev-server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple server for mockjs",
   "license": "MIT",
   "main": "index.js",
