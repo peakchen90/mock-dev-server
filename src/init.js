@@ -9,7 +9,7 @@ let router
 
 function init(mock, _base) {
   if (!/^\//.test(_base)) {
-    throw new Error('根目录必须以 / 开始')
+    throw chalk.bgRed.black(' ERROR ') + chalk.red(' 根目录必须以 / 开始')
   }
   base = _base
   router = []
@@ -18,8 +18,7 @@ function init(mock, _base) {
     if (exist) {
       eachDir(dir)
     } else {
-      throw chalk.bgRed.black(' ERROR ') + chalk.red(' ' + dir + ' not exist')
-      // console.log(chalk.bgRed.black(' ERROR ') + chalk.red(' ' + dir + ' not exist'), '\n')
+      throw chalk.bgRed.black(' ERROR ') + chalk.red(` ${dir} not exist`)
     }
   })
 }
@@ -72,7 +71,7 @@ function parseMock(f, filename, parent) {
       data
     })
   } catch (e) {
-    console.error(chalk.red('JSON ERROR on: ' + f))
+    console.error(chalk.bgRed.black(' ERROR ') + chalk.red(' JSON ERROR on: ' + f))
     console.error(chalk.red(e.stack))
   }
 }
