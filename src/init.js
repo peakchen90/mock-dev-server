@@ -14,13 +14,11 @@ function init(mock, _base) {
   base = _base
   router = []
   const dir = path.resolve(mock)
-  fs.exists(dir, exist => {
-    if (exist) {
-      eachDir(dir)
-    } else {
-      throw chalk.bgRed.black(' ERROR ') + chalk.red(` ${dir} not exist`)
-    }
-  })
+  if (fs.existsSync(dir)) {
+    eachDir(dir)
+  } else {
+    throw chalk.bgRed.black(' ERROR ') + chalk.red(` ${dir} not exist`)
+  }
 }
 
 /**

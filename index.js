@@ -16,7 +16,9 @@ function MockServer({
     watcher.on('change', (_path) => {
       if (/\.json$/i.test(_path)) {
         server.updateStart = Date.now()
-        server.update(initMock(mock, base), path.resolve(_path))
+        setTimeout(() => {
+          server.update(initMock(mock, base), path.resolve(_path))
+        }, 0)
       }
     })
   } else {
