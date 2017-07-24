@@ -6,13 +6,15 @@ const deleteComments = require('./util').deleteComments
 // 所有router信息
 let base
 let router
+let commonData
 
-function init(mock, _base) {
+function init(mock, _base, _commonData) {
   if (!/^\//.test(_base)) {
     throw chalk.bgRed.black(' ERROR ') + chalk.red(' 根目录必须以 / 开始')
   }
   base = _base
   router = []
+  commonData = _commonData
   const dir = path.resolve(mock)
   if (fs.existsSync(dir)) {
     eachDir(dir)
@@ -60,6 +62,7 @@ function parseMock(f, filename, parent) {
   try {
     data = deleteComments(data)
     data = JSON.parse(data)
+    data = Object.assign(commonData, data)
     let path = base + '/' + parent + '/' + filename
     // 移除多余的斜杠
     path = path.replace(/\/{2,}/g, '/')
@@ -74,7 +77,7 @@ function parseMock(f, filename, parent) {
   }
 }
 
-module.exports = function (mock, base) {
-  init(mock, base)
+module.exports = function (mock, base, commonData) {
+  init(mock, base, commonData)
   return router
 }
