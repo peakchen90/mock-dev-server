@@ -36,14 +36,14 @@ function eachDir(dir, parent = '/') {
     let stat = fs.statSync(f)
 
     // 判断是否是json文件
-    if (stat.isFile && /^(.+)\.json$/i.test(file)) {
+    if (stat.isFile() && /^(.+)\.json$/i.test(file)) {
       // 文件名
       let filename = RegExp.$1
       // 解析路由
       parseMock(f, filename, parent)
 
       // 如果是目录，递归
-    } else if (stat.isDirectory) {
+    } else if (stat.isDirectory()) {
       eachDir(f, parent + '/' + file)
     }
   })
