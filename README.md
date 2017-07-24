@@ -3,8 +3,12 @@
 
 ## 安装
 
-```
+```bash
+# 全局安装，方便使用 mock-dev-server 命令
 npm install -g mock-dev-server
+
+# 局部安装
+npm install --dev-save mock-dev-server
 ```
 
 ## 如何使用
@@ -15,9 +19,9 @@ npm install -g mock-dev-server
     /a
     /sub/b
     /sub/c
-    
+
     // 如果设置的基本路径， 将会在路由最前面加上基本路径，如 `mock-dev-server -b /api`，将会生成以下路由：
-    
+
     /api/a
     /api/sub/b
     /api/sub/c
@@ -26,8 +30,33 @@ npm install -g mock-dev-server
   4. 配置 Mock 数据的 json 文件说明：API与 [Mockjs官网api](http://mockjs.com)一致，使用 `Mock.mock()` 方法返回随机数据
   5. 运行命令 `mock-dev-server` ，即可在 http://localhost:3000/* 请求到api，支持所有的请求类型，如果要动态改变 `mock` 数据，则需要在命令行添加 `-w` 参数
 
+> 通过node脚本启动示例
+```js
+const mockServer = require('mock-dev-server')
+mockServer({
+  mock = 'mock',
+  watch = false,
+  port = 3000,
+  base = '/'
+}, {
+  status: 200,
+  text: 'success'
+})
+
+// mockServer({
+//   port = 3000
+// }, function() {
+//   return {
+//     status: 200
+//   }
+// })
+```
+
+**（v1.0.0新增）**`mockServer`方法的第一个参数是一个对象，与命令行参数类似，第二个参数（可选）表示通用数据，可以是一个对象或一个函数（返回一个对象），所有的请求都会返回这些通用数据
+
 ## 示例
   1. 目录结构
+
   ```
   ├── ...
   ├── mock
