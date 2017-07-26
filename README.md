@@ -8,7 +8,7 @@
 npm install -g mock-dev-server
 
 # 局部安装
-npm install --dev-save mock-dev-server
+npm install --save-dev mock-dev-server
 ```
 
 ## 如何使用
