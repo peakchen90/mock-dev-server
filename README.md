@@ -1,3 +1,7 @@
+[![npm](https://img.shields.io/npm/v/mock-dev-server.svg)](https://www.npmjs.com/package/mock-dev-server)
+[![npm](https://img.shields.io/npm/dt/mock-dev-server.svg)](https://www.npmjs.com/package/mock-dev-server)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/peakchen90/mock-dev-server/blob/master/LICENSE)
+
 # mock-dev-server
 一个简易的Mock服务器
 
