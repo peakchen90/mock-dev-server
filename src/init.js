@@ -62,7 +62,7 @@ function parseMock(f, filename, parent) {
   try {
     data = deleteComments(data)
     data = JSON.parse(data)
-    data = Object.assign(commonData, data)
+    data = Object.assign({}, commonData, data)
     let path = base + '/' + parent + '/' + filename
     // 移除多余的斜杠
     path = path.replace(/\/{2,}/g, '/')
